@@ -57,3 +57,7 @@ No hace falta instalar nada ni usar servidor.
 - HTML5
 - CSS3
 - JavaScript (canvas y `localStorage`)
+
+## Link de la web (hosteado desde Netlify)
+
+- https://vocal-nougat-a99c8f.netlify.app/
