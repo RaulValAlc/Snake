@@ -1,0 +1,228 @@
+/* ===== Estilos generales ===== */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 20px;
+    min-height: 100vh;
+    background-color: #0f172a;
+    color: #f8fafc;
+    font-family: Arial, Helvetica, sans-serif;
+
+    /* Centramos todo en la pantalla */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* Para que no se seleccione el texto al jugar */
+    user-select: none;
+}
+
+.contenedor {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    margin: 0 0 15px 0;
+    letter-spacing: 6px;
+    color: #34d399;
+}
+
+/* ===== Marcador ===== */
+.marcador {
+    display: flex;
+    justify-content: space-between;
+    background-color: #1e293b;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+}
+
+.caja-puntos {
+    display: flex;
+    flex-direction: column;
+}
+
+.etiqueta {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.numero {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.verde {
+    color: #34d399;
+}
+
+.naranja {
+    color: #fbbf24;
+}
+
+/* ===== Zona de juego ===== */
+.zona-juego {
+    position: relative; /* necesario para poner las pantallas encima del canvas */
+    width: 100%;
+}
+
+canvas {
+    display: block;
+    width: 100%;
+    height: auto;
+    background-color: #020617;
+    border: 2px solid #334155;
+    border-radius: 10px;
+}
+
+/* Pantallas que se superponen al canvas (inicio, pausa y game over) */
+.pantalla {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(2, 6, 23, 0.9);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.pantalla h2 {
+    margin: 0 0 10px 0;
+}
+
+.pantalla p {
+    color: #cbd5e1;
+    margin: 0 0 20px 0;
+}
+
+.pantalla-fin {
+    background-color: rgba(69, 10, 10, 0.92);
+}
+
+.pantalla-fin h2 {
+    color: #f87171;
+    font-size: 32px;
+}
+
+/* Clase para esconder elementos desde JavaScript */
+.oculto {
+    display: none;
+}
+
+/* ===== Botones ===== */
+.boton {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.boton-verde {
+    background-color: #10b981;
+    color: #022c22;
+}
+
+.boton-verde:hover {
+    background-color: #059669;
+}
+
+.boton-rojo {
+    background-color: #ef4444;
+    color: white;
+}
+
+.boton-rojo:hover {
+    background-color: #dc2626;
+}
+
+.boton-gris {
+    background-color: #1e293b;
+    color: #e2e8f0;
+    border: 1px solid #334155;
+    padding: 10px 20px;
+    font-size: 14px;
+}
+
+.boton-gris:hover {
+    background-color: #334155;
+}
+
+.botones-juego {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+/* ===== Mando para móvil ===== */
+/* Por defecto está oculto (en ordenador no hace falta) */
+.mando {
+    display: none;
+    grid-template-columns: 60px 60px 60px;
+    grid-template-rows: 60px 60px;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton-mando {
+    background-color: #1e293b;
+    color: white;
+    border: 1px solid #334155;
+    border-radius: 10px;
+    font-size: 22px;
+    cursor: pointer;
+}
+
+.boton-mando:active {
+    background-color: #059669;
+}
+
+/* Colocamos cada flecha en su sitio de la cuadrícula */
+.arriba {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.izquierda {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.abajo {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.derecha {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+.ayuda {
+    margin-top: 20px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* En pantallas pequeñas (móviles) mostramos el mando */
+@media (max-width: 768px) {
+    .mando {
+        display: grid;
+    }
+}

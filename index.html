@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Snake</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="contenedor">
+        <h1>SNAKE</h1>
+        <!-- Marcador de puntos y récord -->
+        <div class="marcador">
+            <div class="caja-puntos">
+                <span class="etiqueta">PUNTOS</span>
+                <span id="puntos" class="numero verde">0</span>
+            </div>
+            <div class="caja-puntos">
+                <span class="etiqueta">RÉCORD</span>
+                <span id="record" class="numero naranja">0</span>
+            </div>
+        </div>
+        <!-- Zona del juego: el canvas y las pantallas que se ponen encima -->
+        <div class="zona-juego">
+            <canvas id="lienzo" width="400" height="400"></canvas>
+            <!-- Pantalla de inicio y de pausa -->
+            <div id="pantallaInicio" class="pantalla">
+                <h2 id="tituloInicio">¿Listo para jugar?</h2>
+                <p id="textoInicio">Usa las flechas del teclado (o WASD) para mover la serpiente.</p>
+                <button id="botonEmpezar" class="boton boton-verde">¡EMPEZAR!</button>
+            </div>
+            <!-- Pantalla de Game Over (empieza oculta) -->
+            <div id="pantallaFin" class="pantalla pantalla-fin oculto">
+                <h2>GAME OVER</h2>
+                <p id="motivoFin">Has perdido</p>
+                <p>Puntuación final: <span id="puntosFinales">0</span></p>
+                <button id="botonReintentar" class="boton boton-rojo">Reintentar</button>
+            </div>
+        </div>
+        <!-- Botones de pausa y reinicio -->
+        <div class="botones-juego">
+            <button id="botonPausa" class="boton boton-gris">Pausar</button>
+            <button id="botonReiniciar" class="boton boton-gris">Reiniciar</button>
+        </div>
+        <!-- Botones para el móvil (solo se ven en pantallas pequeñas) -->
+        <div class="mando">
+            <button id="botonArriba" class="boton-mando arriba">▲</button>
+            <button id="botonIzquierda" class="boton-mando izquierda">◀</button>
+            <button id="botonAbajo" class="boton-mando abajo">▼</button>
+            <button id="botonDerecha" class="boton-mando derecha">▶</button>
+        </div>
+        <p class="ayuda">Controles: flechas o WASD | Espacio para pausar</p>
+    </div>
+    <!-- Enlazamos el JavaScript al final para que el HTML ya esté cargado -->
+    <script src="script.js"></script>
+</body>
+
+</html>
