@@ -1,4 +1,4 @@
-// ===== Referencias a los elementos del HTML =====
+// Referencias a los elementos del HTML
 var lienzo = document.getElementById("lienzo");
 var ctx = lienzo.getContext("2d");
 
@@ -17,15 +17,15 @@ var botonReintentar = document.getElementById("botonReintentar");
 var botonPausa = document.getElementById("botonPausa");
 var botonReiniciar = document.getElementById("botonReiniciar");
 
-// ===== Configuración del tablero =====
-var TAMANO_CELDA = 20; // cada cuadro mide 20px
+//Configuración del tablero
+var TAMANO_CELDA = 20; // tamaño cuadrado
 var NUM_CELDAS = lienzo.width / TAMANO_CELDA; // 400 / 20 = 20 celdas por lado
 
-// ===== Variables del juego =====
+//Variables del juego
 var serpiente = [];          // array de objetos {x, y} (posición en celdas)
 var comida = { x: 0, y: 0 };
 
-var direccionX = 1;          // hacia dónde se mueve ahora
+var direccionX = 1;          // hacia dónde se mueve en el momento
 var direccionY = 0;
 var siguienteX = 1;          // dirección que quiere el jugador
 var siguienteY = 0;
@@ -34,19 +34,19 @@ var puntos = 0;
 var record = 0;
 var velocidad = 120;         // milisegundos entre cada movimiento
 
-var intervalo = null;        // aquí guardamos el temporizador del juego
+var intervalo = null;        //temporizador del juego
 var jugando = false;
 var pausado = false;
 
-// ===== Cargar el récord guardado =====
-// Si no hay nada guardado, empezamos en 0
+//Cargar el récord guardado
+// Si no hay nada guardado, se empieza en 0
 var recordGuardado = localStorage.getItem("snake_record");
 if (recordGuardado !== null) {
     record = parseInt(recordGuardado);
 }
 textoRecord.textContent = record;
 
-// ===== Empezar una partida nueva =====
+//Empezar una partida nueva
 function empezarJuego() {
     // La serpiente empieza con 3 cuadritos
     serpiente = [
@@ -82,7 +82,7 @@ function empezarJuego() {
     dibujar();
 }
 
-// ===== Esta función se repite continuamente =====
+//Esta función se repite continuamente 
 function bucleJuego() {
     if (pausado == true) {
         return; // si está pausado no hacemos nada
@@ -91,7 +91,7 @@ function bucleJuego() {
     dibujar();
 }
 
-// ===== Mover la serpiente un paso =====
+//Mover la serpiente un paso
 function moverSerpiente() {
     // Actualizamos la dirección con la que pidió el jugador
     direccionX = siguienteX;
@@ -103,13 +103,13 @@ function moverSerpiente() {
         y: serpiente[0].y + direccionY
     };
 
-    // 1. Comprobamos si choca con las paredes
+    // Comprobamos si chocó con las paredes
     if (nuevaCabeza.x < 0 || nuevaCabeza.x >= NUM_CELDAS || nuevaCabeza.y < 0 || nuevaCabeza.y >= NUM_CELDAS) {
         terminarJuego("¡Has chocado contra la pared!");
         return;
     }
 
-    // 2. Comprobamos si choca con su propio cuerpo
+    // Comprobamos si choca con su propio cuerpo
     for (var i = 0; i < serpiente.length; i++) {
         if (nuevaCabeza.x == serpiente[i].x && nuevaCabeza.y == serpiente[i].y) {
             terminarJuego("¡Te has mordido a ti mismo!");
@@ -120,7 +120,7 @@ function moverSerpiente() {
     // Añadimos la nueva cabeza al principio del array
     serpiente.unshift(nuevaCabeza);
 
-    // 3. Comprobamos si se ha comido la manzana
+    // Comprobamos si se ha comido manzana
     if (nuevaCabeza.x == comida.x && nuevaCabeza.y == comida.y) {
         puntos = puntos + 10;
         textoPuntos.textContent = puntos;
@@ -146,7 +146,7 @@ function moverSerpiente() {
     }
 }
 
-// ===== Crear la comida en un sitio libre =====
+// Crear la comida en un sitio libre
 function crearComida() {
     var posicionValida = false;
 
@@ -165,7 +165,7 @@ function crearComida() {
     }
 }
 
-// ===== Dibujar todo en el canvas =====
+//Dibujar todo en el canvas
 function dibujar() {
     // Borramos todo pintando el fondo
     ctx.fillStyle = "#020617";
@@ -192,7 +192,7 @@ function dibujar() {
     dibujarSerpiente();
 }
 
-// ===== Dibujar la manzana =====
+// Dibujar la manzana
 function dibujarComida() {
     // Pasamos de celdas a píxeles
     var px = comida.x * TAMANO_CELDA;
@@ -209,7 +209,7 @@ function dibujarComida() {
     ctx.fillRect(px + 9, py + 1, 3, 4);
 }
 
-// ===== Dibujar la serpiente =====
+//Dibujar la serpiente
 function dibujarSerpiente() {
     for (var i = 0; i < serpiente.length; i++) {
         var px = serpiente[i].x * TAMANO_CELDA;
@@ -228,7 +228,7 @@ function dibujarSerpiente() {
     }
 }
 
-// ===== Dibujar los ojos según la dirección =====
+// Dibujar los ojos según la dirección
 function dibujarOjos(px, py) {
     ctx.fillStyle = "white";
 
@@ -251,7 +251,7 @@ function dibujarOjos(px, py) {
     }
 }
 
-// ===== Fin de la partida =====
+//Fin de la partida
 function terminarJuego(motivo) {
     jugando = false;
     clearInterval(intervalo);
@@ -261,7 +261,7 @@ function terminarJuego(motivo) {
     pantallaFin.classList.remove("oculto");
 }
 
-// ===== Pausar / reanudar =====
+// Pausar / reanudar
 function pausar() {
     // Si no estamos jugando no hace nada
     if (jugando == false) {
@@ -282,7 +282,7 @@ function pausar() {
     }
 }
 
-// ===== Cambiar la dirección de la serpiente =====
+// Cambiar la dirección de la serpiente
 function cambiarDireccion(x, y) {
     if (jugando == false || pausado == true) {
         return;
@@ -300,7 +300,7 @@ function cambiarDireccion(x, y) {
     siguienteY = y;
 }
 
-// ===== Eventos del teclado =====
+// Eventos del teclado 
 document.addEventListener("keydown", function (evento) {
     // Evitamos que la página haga scroll con las flechas y el espacio
     if (evento.code == "ArrowUp" || evento.code == "ArrowDown" || evento.code == "ArrowLeft" || evento.code == "ArrowRight" || evento.code == "Space") {
@@ -320,7 +320,7 @@ document.addEventListener("keydown", function (evento) {
     }
 });
 
-// ===== Botones del mando para móvil =====
+// Botones del mando para móvil
 document.getElementById("botonArriba").addEventListener("click", function () {
     cambiarDireccion(0, -1);
 });
@@ -334,7 +334,7 @@ document.getElementById("botonDerecha").addEventListener("click", function () {
     cambiarDireccion(1, 0);
 });
 
-// ===== Botones de la interfaz =====
+// Botones de la interfaz 
 botonEmpezar.addEventListener("click", function () {
     if (jugando == false) {
         empezarJuego();
@@ -347,5 +347,5 @@ botonReintentar.addEventListener("click", empezarJuego);
 botonReiniciar.addEventListener("click", empezarJuego);
 botonPausa.addEventListener("click", pausar);
 
-// ===== Al cargar la página dibujamos el tablero vacío =====
+// Al cargar la página dibujamos el tablero vacío
 dibujar();
