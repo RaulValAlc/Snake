@@ -1,4 +1,4 @@
-/* ===== Estilos generales ===== */
+/*Estilos generales*/
 * {
     box-sizing: border-box;
 }
@@ -11,7 +11,7 @@ body {
     color: #f8fafc;
     font-family: Arial, Helvetica, sans-serif;
 
-    /* Centramos todo en la pantalla */
+    /* Centrar todo en la pantalla */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -33,7 +33,7 @@ h1 {
     color: #34d399;
 }
 
-/* ===== Marcador ===== */
+/* Marcador */
 .marcador {
     display: flex;
     justify-content: space-between;
@@ -67,7 +67,7 @@ h1 {
     color: #fbbf24;
 }
 
-/* ===== Zona de juego ===== */
+/*Zona de juego*/
 .zona-juego {
     position: relative; /* necesario para poner las pantallas encima del canvas */
     width: 100%;
@@ -122,7 +122,7 @@ canvas {
     display: none;
 }
 
-/* ===== Botones ===== */
+/* Botones  */
 .boton {
     border: none;
     border-radius: 8px;
@@ -169,7 +169,7 @@ canvas {
     margin-top: 15px;
 }
 
-/* ===== Mando para móvil ===== */
+/* Mando para móvil */
 /* Por defecto está oculto (en ordenador no hace falta) */
 .mando {
     display: none;
@@ -193,7 +193,7 @@ canvas {
     background-color: #059669;
 }
 
-/* Colocamos cada flecha en su sitio de la cuadrícula */
+/* Posicionamiento de cada flecha en su sitio de la cuadrícula */
 .arriba {
     grid-column: 2;
     grid-row: 1;
@@ -220,7 +220,7 @@ canvas {
     color: #64748b;
 }
 
-/* En pantallas pequeñas (móviles) mostramos el mando */
+/* En pantallas pequeñas (móviles) se muestra el mando */
 @media (max-width: 768px) {
     .mando {
         display: grid;
