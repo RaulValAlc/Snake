@@ -1,6 +1,6 @@
 # Juego Snake
 
-Juego del Snake clásico hecho con HTML, CSS y JavaScript (sin librerías externas).
+Juego del Snake clásico hecho con HTML, CSS y JavaScript (sin librerías externas)
 
 ## Estructura del proyecto
 
